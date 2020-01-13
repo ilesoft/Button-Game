@@ -1,0 +1,23 @@
+# Copy of configuration file for apache2 in /etc/apache2/sites-available/
+
+<VirtualHost *:443 *:80>
+
+	ServerName painike
+
+	DocumentRoot /path/to/painike/folder/
+
+	<Directory /path/to/painike/folder/>
+        Require local
+  </Directory>
+
+
+	 SSLEngine on
+
+	 SSLCertificateFile /etc/apache2/ssl/ca.crt
+	 SSLCertificateKeyFile /etc/apache2/ssl/ca.key
+
+     # Set credentials for your own MySQL instance
+     SetEnv MYSQL_USER painike
+     SetEnv MYSQL_PASSWD 1234567890 # add your own password
+
+</VirtualHost>
