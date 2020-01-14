@@ -35,21 +35,35 @@ new Vue({
 </div>`,
   methods: {
     decrease: function() {
+      /**
+       *  Performs a "turn" in game.
+       */
       this.points--;
-      const pointsWon = ajax();
-      if (pointsWon !== 0) {
-        this.message = `You just won ${pointsWon} points. 10 clicks to next prize.`;
+      const pointsWon = this.ajax();
+      if (Number.isNaN(pointsWon)) {
+        this.message = "There was a problem. Starting a new game...";
+        this.points = "😒"; // Non-ASCII character, I'm sorry
+        return;
+      } else if (pointsWon !== 0) {
+        this.message = `You just won ${pointsWon} points.
+                        10 clicks to next prize.`;
       } else {
         this.message = "";
       }
       this.points += pointsWon;
-      document.cookie = `points=${this.points}; max-age=31536000; samesite=strict; secure`;
+      document.cookie = `points=${this.points};
+                         max-age=31536000;
+                         samesite=strict;
+                         secure`;
       // In case of lose
       if (this.points <= 0) {
         this.lose();
       }
     },
     newGame: function() {
+      /**
+       *  Starts a new game and sets initial values.
+       */
       this.points = 20;
       document.cookie = "points=20; max-age=31536000; samesite=strict; secure";
       this.message = "";
@@ -57,9 +71,30 @@ new Vue({
       this.buttonDisabled = false;
     },
     lose: function() {
+      /**
+       *  Shows user she/he lost.
+       */
       this.message = "You lose";
       this.buttonDisabled = true;
-      this.newGameDisplay.display = "inline";
+      this.newGameDisplay.display = "block";
+    },
+    ajax: function() {
+      /**
+       * Performs request to API. Synchronous XMLHttpRequest generatess some
+       * warning. This time this is intentional.
+       * @return {int}  Points user has won.
+       */
+      const req = new XMLHttpRequest();
+      req.open("POST", "https://" + document.domain + "/increase.php", false);
+      req.send();
+      if (req.status === 200) {
+        return JSON.parse(req.responseText)["points"];
+      } else {
+        setInterval(()=>{
+          this.newGame();
+        }, 40000);
+        return NaN;
+      }
     },
   },
   mounted: function() {
@@ -82,20 +117,3 @@ new Vue({
     }
   },
 });
-
-
-/**
- * ajax - performs request to API
- *
- * @return {int}  Points user won.
- */
-function ajax() { // TODO: Async this
-  const req = new XMLHttpRequest();
-  req.open("POST", "https://" + document.domain + "/increase.php", false);
-  req.send();
-  if (req.status === 200) {
-    return JSON.parse(req.responseText)["points"];
-  } else {
-    // TODO:
-  }
-}

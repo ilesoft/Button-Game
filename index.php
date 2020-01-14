@@ -19,7 +19,7 @@
   <body>
     <div id="app"></div>
     <div id="footer">
-      <p>Check how that works &reg<a href="https://github.com/ilesoft/painikepeli">Ilesoft</a></p>
+      <p>Check how that works <a href="https://github.com/ilesoft/painikepeli">GitHub/Ilesoft</a></p>
     </div>
 
     <!--TODO: Change to production version-->
