@@ -4,21 +4,22 @@
 
 	ServerName painike
 
-	DocumentRoot /path/to/painike/folder/
+	DocumentRoot /path/to/button_game/
 
-	<Directory /path/to/painike/folder/>
+	<Directory /path/to/button_game/>
         Require local
   </Directory>
 
 
 	 SSLEngine on
 
+	 # Paths to SSL certificate files
 	 SSLCertificateFile /etc/apache2/ssl/ca.crt
 	 SSLCertificateKeyFile /etc/apache2/ssl/ca.key
 
-     # Set credentials for your own MySQL instance
-		 SetEnv MYSQL_HOST localhost
-     SetEnv MYSQL_USER button
-     SetEnv MYSQL_PASSWD 1234567890 # add your own password
+   # Set credentials for MySQL instance
+	 SetEnv MYSQL_HOST localhost
+   SetEnv MYSQL_USER button
+   SetEnv MYSQL_PASSWD 1234567890 # add your own password
 
 </VirtualHost>

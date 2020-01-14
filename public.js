@@ -92,7 +92,7 @@ new Vue({
       } else {
         setInterval(()=>{
           this.newGame();
-        }, 40000);
+        }, 3000);
         return NaN;
       }
     },

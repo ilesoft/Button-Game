@@ -18,8 +18,11 @@
   </head>
   <body>
     <div id="app"></div>
+    <noscript>
+      <p>Well, I'm not going to work without JavaScript.</p>
+    </noscript>
     <div id="footer">
-      <p>Check how that works <a href="https://github.com/ilesoft/painikepeli">GitHub/Ilesoft</a></p>
+      <p>Check how that works <a href="https://github.com/ilesoft/Button-Game">GitHub/Ilesoft</a></p>
     </div>
 
     <!--TODO: Change to production version-->
