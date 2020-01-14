@@ -17,7 +17,8 @@
 	 SSLCertificateKeyFile /etc/apache2/ssl/ca.key
 
      # Set credentials for your own MySQL instance
-     SetEnv MYSQL_USER painike
+		 SetEnv MYSQL_HOST localhost
+     SetEnv MYSQL_USER button
      SetEnv MYSQL_PASSWD 1234567890 # add your own password
 
 </VirtualHost>
