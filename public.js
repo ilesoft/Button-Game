@@ -11,18 +11,27 @@ new Vue({
   },
   template:
 `<div>
-    <button id=button
-            v-bind:disabled=buttonDisabled
-            v-on:click=decrease>
-      {{buttonLabel}}
-    </button>
-    <p>{{points}}</p>
-    <p>{{message}}</p>
+  <div id=game>
+    <div id=pointsDiv>
+      <p>Your points:</p>
+      <span id=pointsBox>{{points}}</span>
+    </div>
+    <div>
+      <button id=button
+              v-bind:disabled=buttonDisabled
+              v-on:click=decrease>
+        {{buttonLabel}}
+      </button>
+    </div>
+  </div>
+  <p>{{message}}</p>
+  <div>
     <button id=newGame
             v-bind:style=newGameDisplay
             v-on:click=newGame>
       Start a new game
     </button>
+  </div>
 </div>`,
   methods: {
     decrease: function() {

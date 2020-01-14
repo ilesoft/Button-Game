@@ -11,17 +11,20 @@
 
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-    <head>
-        <meta charset="utf-8">
-        <title>Button Game</title>
-        <link rel="stylesheet" type="text/css" href="style.css">
-    </head>
-    <body>
-        <div id="app"></div>
+  <head>
+    <meta charset="utf-8">
+    <title>Button Game</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+  </head>
+  <body>
+    <div id="app"></div>
+    <div id="footer">
+      <p>Check how that works &reg<a href="https://github.com/ilesoft/painikepeli">Ilesoft</a></p>
+    </div>
 
-        <!--TODO: Change to production version-->
-        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <!--TODO: Change to production version-->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 
-        <script src="public.js"></script>
-    </body>
+    <script src="public.js"></script>
+  </body>
 </html>
