@@ -17,6 +17,7 @@ Configure apache to serve Button Game by adding button_game.conf to /etc/apache2
 ```
 > a2ensite button_game
 ```
+Redirecting from port 80 to 443 should be done to prevent problems.
 ###### database
 Create new database to use with application.
 ```
@@ -26,6 +27,7 @@ mysql> CREATE TABLE `counter` (`value` int(255) NOT NULL DEFAULT '0') ENGINE=Inn
 mysql> INSERT INTO `counter` (`value`) VALUES (0);
 ```
 Make sure there is user which have privileges to `SELECT` and `UPDATE` to button database. Credentials of this user should be configured to button_game.conf.
+Check That php-mysql is installed.
 ###### SSL
 Configure apache to use SSL encryption.  Make sure that loation of your certificate files and paths in button_game.conf match.
 

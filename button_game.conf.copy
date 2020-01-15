@@ -1,6 +1,6 @@
 # Copy of configuration file for apache2 in /etc/apache2/sites-available/
 
-<VirtualHost *:443 *:80>
+<VirtualHost *:443>
 
 	ServerName painike
 
