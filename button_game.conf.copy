@@ -7,9 +7,8 @@
 	DocumentRoot /path/to/button_game/
 
 	<Directory /path/to/button_game/>
-        Require local
+    require all granted
   </Directory>
-
 
 	 SSLEngine on
 
