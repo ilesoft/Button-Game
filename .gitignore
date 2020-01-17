@@ -149,3 +149,8 @@ config/local*.*
 
 #mocha reports
 mochawesome-report
+
+# Minifyed files
+*.min.js
+*.min.css
+*.base64

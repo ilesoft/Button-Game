@@ -14,7 +14,11 @@
   <head>
     <meta charset="utf-8">
     <title>Button Game</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
+
+    <!-- Its clever to use inline styles and favicons for this one page site
+         because there sould not be need for several loads-->
+    <link rel="icon" href="data:image/x-icon;base64,<?php include "favicon.base64"; ?>">
+    <style><?php require "style.min.css";?></style>
   </head>
   <body>
     <div id="app"></div>
@@ -27,9 +31,11 @@
         and check my <a href="http://ilesoft.dy.fi:8000/">CV</a></p>
     </div>
 
-    <!--TODO: Change to production version-->
-    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <!--development version-->
+    <!--script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script-->
+    <!-- production version -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script>
 
-    <script src="public.js"></script>
+    <script><?php require "public.min.js"; ?></script>
   </body>
 </html>

@@ -51,9 +51,9 @@ new Vue({
         this.message = "";
       }
       this.points += pointsWon;
-      document.cookie = `points=${this.points};
-                         max-age=31536000;
-                         samesite=strict;
+      document.cookie = `points=${this.points};\
+                         max-age=31536000;\
+                         samesite=strict;\
                          secure`;
       // In case of lose
       if (this.points <= 0) {
