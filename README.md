@@ -26,7 +26,7 @@ mysql> USE `button`;
 mysql> CREATE TABLE `counter` (`value` int(255) NOT NULL DEFAULT '0') ENGINE=InnoDB DEFAULT CHARSET=utf8;
 mysql> INSERT INTO `counter` (`value`) VALUES (0);
 ```
-Make sure there is user which have privileges to `SELECT` and `UPDATE` to button database. Credentials of this user should be configured to button_game.conf.
+Make sure there is user which have privileges to `SELECT`, `UPDATE` and `LOCK TABLES` to button database. Credentials of this user should be configured to button_game.conf.
 Check That php-mysql is installed.
 ###### SSL
 Configure apache to use SSL encryption.  Make sure that loation of your certificate files and paths in button_game.conf match.

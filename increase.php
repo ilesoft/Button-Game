@@ -20,30 +20,35 @@
     header("HTTP/1.0 500 We fucked up");
     exit();
   }
+  // Queries in nice format
+  $q1 = "LOCK TABLES counter WRITE";
+  $q2 = "UPDATE counter SET value = value + 1";
+  $q3 = "SELECT  value FROM counter";
+  $q4 = "UNLOCK TABLES";
 
-  $sql = "UPDATE counter SET value = value + 1";
+  if (  $connection->query($q1) === TRUE
+        && $connection->query($q2) === TRUE) {
+    $counter = $connection->query($q3)->fetch_assoc()["value"];
+    $connection->query($q4);
+    $data = array("points"=>0);
 
-  if ($connection->query($sql) === TRUE) {
-      $counter = $connection->query("SELECT value FROM counter")->fetch_assoc()["value"];
-      $data = array("points"=>0);
+    // Vheck if user wins
+    if ($counter % 10 === 0) {
+      $data["points"] = 5;
+    }
+    if ($counter % 100 === 0) {
+      $data["points"] = 40;
+    }
+    if ($counter % 500 === 0) {
+      $data["points"] = 250;
+    }
 
-      // Vheck if user wins
-      if ($counter % 10 === 0) {
-        $data["points"] = 5;
-      }
-      if ($counter % 100 === 0) {
-        $data["points"] = 40;
-      }
-      if ($counter % 500 === 0) {
-        $data["points"] = 250;
-      }
-
-      header("content-type application/json");
-      echo json_encode($data);
+    header("content-type application/json");
+    echo json_encode($data);
 
   } else {
-      header("HTTP/1.0 500 We fucked up");
-      // TODO: Some logging would be nice
+    header("HTTP/1.0 500 We fucked up");
+    // TODO: Some logging would be nice
   }
 
   $connection->close();
